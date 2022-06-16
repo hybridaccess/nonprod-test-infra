@@ -8,7 +8,7 @@ resource "azurerm_resource_group" "this" {
 }
 
 module "cassandra" {
-  source                 = "github.com/hybridaccess/tf-module-cassandra.git?ref=master"
+  source                 = "github.com/hybridaccess/tf-module-infra.git?ref=master"
   environment            = var.environment
   azurerm_resource_group = data.azurerm_resource_group
   lb_frontend_ip         = var.frontend_ip
