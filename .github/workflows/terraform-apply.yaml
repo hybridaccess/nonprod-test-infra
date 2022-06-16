@@ -3,7 +3,7 @@ name: terraform
 on:
   push:
     branches:
-      main
+      master
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
