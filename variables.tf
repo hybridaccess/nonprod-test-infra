@@ -22,7 +22,7 @@ variable "name" {
 
 variable "frontend_ip" {
   type    = string
-  default = "10.1.0.100"
+  default = "172.16.1.100"
 }
 
 

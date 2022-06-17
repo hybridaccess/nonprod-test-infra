@@ -15,7 +15,7 @@ env:
 jobs:
   tf-apply:
     runs-on: ubuntu-latest
-    name: terraform plan
+    name: terraform apply
 
     steps:
       - name: Checkout
