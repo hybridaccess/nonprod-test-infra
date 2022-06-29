@@ -1,2 +1,2 @@
 # nonprod-test-infra
-infra
+test-infra
