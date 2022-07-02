@@ -3,7 +3,7 @@ resource "azurerm_resource_group" "this" {
   name     = "${var.name}-rg"
 
   tags = {
-    dept = "IT"
+    dept = "IT Dept"
   }
 }
 
