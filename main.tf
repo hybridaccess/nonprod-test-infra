@@ -19,4 +19,16 @@ module "cassandra" {
   cassandra_node_sku     = var.cassandra_node_sku
 }
 
+module "ise" {
+  source              = "github.com/hybridaccess/tf-module-azure-ise.git?ref=master"
+  resource_group_name = azurerm_resource_group.this.name
+  name                = "hax-ise"
+  location            = var.location
+  virtual_network_subnet_ids = [
+    azurerm_subnet.isesubnet1.id,
+    azurerm_subnet.isesubnet2.id,
+    azurerm_subnet.isesubnet3.id,
+    azurerm_subnet.isesubnet4.id
+  ]
+}
 
