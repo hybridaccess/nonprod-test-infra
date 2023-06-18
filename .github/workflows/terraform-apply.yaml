@@ -63,14 +63,14 @@ jobs:
           cat statelist
           
           echo "read state list file into variable..................."
-          IFS = " " read -r -a state_list <<< "$(cat statelist)"      
+          IFS=" " read -r -a state_list <<< "$(cat statelist)"      
           
           echo "state_list---------------"
           echo "${state_list[0]}"
           echo "${state_list[1]}"
           
           echo "read state list file 1 into variable..................."
-          IFS = " " read -r -a state_list1 < statelist    
+          IFS=" " read -r -a state_list1 < statelist    
           
           echo "state_list1---------------"
           echo "${state_list1[0]}"
