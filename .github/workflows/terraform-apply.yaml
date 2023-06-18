@@ -66,15 +66,15 @@ jobs:
           read -r -a state_list <<< "$(cat statelist)"      
           
           echo "state_list---------------"
+          echo "${state_list[0]}"
           echo "${state_list[1]}"
-          echo "${state_list[2]}"
           
           echo "read state list file 1 into variable..................."
           read -r -a state_list1 < statelist    
           
           echo "state_list1---------------"
+          echo "${state_list1[0]}"
           echo "${state_list1[1]}"
-          echo "${state_list1[2]}"
           
           #for state in "${state_list[@]}"; do
           # if [[ "$state" != *".data."* && "$state" != *"gtm_domain"* && "$state" != *"gtm_datacenter"* ]]
