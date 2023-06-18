@@ -44,14 +44,17 @@ jobs:
       - name: Terraform Destroy Plan
         id: plan
         run: |
-          echo "getting state list..."
           terraform init
+          echo "getting state list.................................."
           terraform state list
+          echo "write state list into file ........................"
           terraform state list > statelist
+          echo "show state list in file system ..................."
           ls -al
+          echo "parse state list from file ......................"
           cat statelist
-          echo "parse state list file...."
-          echo "read state list file into variable"
+          
+          echo "read state list file into variable..................."
           read -r -a state_list <<< "$(cat statelist)"
 
           echo "--------------------"          
