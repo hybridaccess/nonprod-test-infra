@@ -64,7 +64,7 @@ jobs:
           cat statelist
           
           echo "read state list file into variable..................."
-          IFS=' ' readarray -t state_list < statelist    
+          readarray -s 1 -t state_list < statelist    
           
           echo "state_list---------------"
           echo "${state_list[0]}"
