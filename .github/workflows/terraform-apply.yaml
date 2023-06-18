@@ -50,15 +50,15 @@ jobs:
           terraform state list > statelist
           ls -al
           cat statelist
-          # echo "parse state list file...."
-          # echo "read state list file into variable"
-          # read -r -a state_list <<< "$(cat akamai-terraform/examples/standalone/statelist)"
+          echo "parse state list file...."
+          echo "read state list file into variable"
+          read -r -a state_list <<< "$(cat statelist)"
 
-          #  echo "--------------------"          
+          echo "--------------------"          
           
-          # echo "---------------"
-          # echo "${state_list[@]}"
-          # echo "---------------"
+          echo "---------------"
+          echo "${state_list[@]}"
+          echo "---------------"
           
           #for state in "${state_list[@]}"; do
           # if [[ "$state" != *".data."* && "$state" != *"gtm_domain"* && "$state" != *"gtm_datacenter"* ]]
