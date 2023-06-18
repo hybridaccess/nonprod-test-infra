@@ -34,13 +34,14 @@ jobs:
         with:
           creds: "${{ secrets.SP_AZURE_CREDS }}"
 
-      - name: terraform plan
-        uses: dflook/terraform-apply@v1
+        #       - name: terraform plan
+        #         uses: dflook/terraform-apply@v1
         
       - name: Terraform Destroy Plan
         id: plan
         run: |
           echo "getting state list..."
+          terraform init
           terraform state list
           terraform state list > statelist
           ls -al
