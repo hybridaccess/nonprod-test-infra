@@ -37,6 +37,8 @@ jobs:
         #       - name: terraform plan
         #         uses: dflook/terraform-apply@v1
         
+      - uses: hashicorp/setup-terraform@v2        
+        
       - name: Terraform Destroy Plan
         id: plan
         run: |
