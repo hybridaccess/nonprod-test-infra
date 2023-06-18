@@ -34,3 +34,45 @@ jobs:
 
       - name: terraform plan
         uses: dflook/terraform-apply@v1
+        
+  tf-destroy:
+    if: github.event.inputs.DESTROY_CONFIG == 'true'
+    needs: tf-apply
+    name: terraform destroy
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # Post import terraform destroy - plan & apply
+      - uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform Init
+        id: init
+        run: terraform init
+
+      - name: Terraform Destroy Plan
+        id: plan
+        run: |
+          echo "getting state list..."
+          terraform state list
+          terraform state list > statelist
+          ls -al
+          cat statelist
+          # echo "parse state list file...."
+          # echo "read state list file into variable"
+          # read -r -a state_list <<< "$(cat akamai-terraform/examples/standalone/statelist)"
+
+          #  echo "--------------------"          
+          
+          # echo "---------------"
+          # echo "${state_list[@]}"
+          # echo "---------------"
+          
+          #for state in "${state_list[@]}"; do
+          # if [[ "$state" != *".data."* && "$state" != *"gtm_domain"* && "$state" != *"gtm_datacenter"* ]]
+          #  then
+          #   echo "generating destroy plan for $state"
+          #    terraform -chdir='akamai-terraform/examples/standalone' plan -target="$state" -var-file="../../../$TFVARS_FILE" -destroy -out="$state.plan"          
+          #  fi
+          # done          
+   
