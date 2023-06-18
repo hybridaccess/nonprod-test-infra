@@ -53,16 +53,17 @@ jobs:
           ls -al
           echo "parse state list from file ......................"
           cat statelist
+          echo "show 1st entry in statelist......................"
           head -n1 statelist
           echo "removing first entry from list........................"
           sed -i '1d' statelist
           echo "read lines 1 from file ...................."
           head -n1 statelist
+          echo "print final state list ......................."
+          cat statelist
           
           echo "read state list file into variable..................."
-          read -r -a state_list <<< "$(cat statelist)"
-
-          echo "--------------------"          
+          read -r -a state_list <<< "$(cat statelist)"      
           
           echo "---------------"
           echo "${state_list[@]}"
