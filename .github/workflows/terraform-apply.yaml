@@ -44,6 +44,7 @@ jobs:
       - name: Terraform Destroy Plan
         id: plan
         run: |
+          set +x 
           terraform init
           echo "getting state list.................................."
           terraform state list
@@ -56,7 +57,7 @@ jobs:
           echo "show 1st entry in statelist......................"
           head -n1 statelist
           echo "removing first entry from list........................"
-          sed -i '1d' statelist
+          # sed -i '1d' statelist
           echo "read lines 1 from file ...................."
           head -n1 statelist
           echo "print final state list ......................."
