@@ -4,6 +4,7 @@ on:
   push:
     branches:
       master
+      tf-destroy
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -36,7 +37,6 @@ jobs:
         uses: dflook/terraform-apply@v1
         
   tf-destroy:
-    if: github.event.inputs.DESTROY_CONFIG == 'true'
     needs: tf-apply
     name: terraform destroy
     runs-on: ubuntu-latest
