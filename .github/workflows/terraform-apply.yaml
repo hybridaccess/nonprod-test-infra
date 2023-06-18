@@ -70,18 +70,21 @@ jobs:
           echo "${state_list[1]}"
           echo "${state_list[2]}"
           echo "${state_list[3]}"
-          echo "${state_list[4]}"          
+          echo "${state_list[4]}"
+          
+          echo "state_list_all---------------"
+          echo "${state_list[@]}"          
            
           
-          for state in "${state_list[@]}"; do
-            if [[ "$state" != *".data."* && "$state" != *"gtm_domain"* && "$state" != *"gtm_datacenter"* ]]
-            then
-              echo "generating destroy plan for $state"
-              terraform plan -target="$state" -out="$state.plan"          
-            fi
-          done 
-          echo "list plans...................."
-          ls -al
+          #for state in "${state_list[@]}"; do
+            #if [[ "$state" != *".data."* && "$state" != *"gtm_domain"* && "$state" != *"gtm_datacenter"* ]]
+            #then
+              #echo "generating destroy plan for $state"
+              #terraform plan -target="$state" -out="$state.plan"          
+            #fi
+          #done 
+          #echo "list plans...................."
+          #ls -al
         
 
 
