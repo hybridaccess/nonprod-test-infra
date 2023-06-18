@@ -37,20 +37,6 @@ jobs:
       - name: terraform plan
         uses: dflook/terraform-apply@v1
         
-  tf-destroy:
-    needs: tf-apply
-    name: terraform destroy
-    runs-on: ubuntu-latest
-
-    steps:
-
-      # Post import terraform destroy - plan & apply
-      - uses: hashicorp/setup-terraform@v2
-
-      - name: Terraform Init
-        id: init
-        run: terraform init
-
       - name: Terraform Destroy Plan
         id: plan
         run: |
@@ -76,4 +62,8 @@ jobs:
           #    terraform -chdir='akamai-terraform/examples/standalone' plan -target="$state" -var-file="../../../$TFVARS_FILE" -destroy -out="$state.plan"          
           #  fi
           # done          
+        
+
+
+        
    
