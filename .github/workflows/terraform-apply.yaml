@@ -69,7 +69,8 @@ jobs:
           echo "${state_list[0]}"
           echo "${state_list[1]}"
           echo "${state_list[2]}"
-          echo "${state_list[3]}"     
+          echo "${state_list[3]}"
+          echo "${state_list[4]}"          
            
           
           for state in "${state_list[@]}"; do
