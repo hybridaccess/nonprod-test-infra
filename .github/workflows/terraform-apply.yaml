@@ -77,7 +77,7 @@ jobs:
           echo "${state_list1[1]}"
           
           echo "read state list file 2 into variable..................."
-          readarray state_list1 < statelist    
+          readarray state_list2 < statelist    
           
           echo "state_list2---------------"
           echo "${state_list2[0]}"
