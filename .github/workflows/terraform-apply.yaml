@@ -63,35 +63,21 @@ jobs:
           cat statelist
           
           echo "read state list file into variable..................."
-          IFS=" " read -r -a state_list <<< "$(cat statelist)"      
+          readarray -t state_list < statelist    
           
           echo "state_list---------------"
-          echo "${state_list[0]}"
-          echo "${state_list[1]}"
+          echo "${state_list[@]}"
+           
           
-          echo "read state list file 1 into variable..................."
-          IFS=" " read -r -a state_list1 < statelist    
-          
-          echo "state_list1---------------"
-          echo "${state_list1[0]}"
-          echo "${state_list1[1]}"
-          
-          echo "read state list file 2 into variable..................."
-          readarray -t state_list2 < statelist    
-          
-          echo "state_list2---------------"
-          echo "${state_list2[0]}"
-          echo "${state_list2[1]}" 
-          echo "${state_list2[2]}"
-          echo "${state_list2[3]}"                 
-          
-          #for state in "${state_list[@]}"; do
-          # if [[ "$state" != *".data."* && "$state" != *"gtm_domain"* && "$state" != *"gtm_datacenter"* ]]
-          #  then
-          #   echo "generating destroy plan for $state"
-          #    terraform -chdir='akamai-terraform/examples/standalone' plan -target="$state" -var-file="../../../$TFVARS_FILE" -destroy -out="$state.plan"          
-          #  fi
-          # done          
+          for state in "${state_list[@]}"; do
+            if [[ "$state" != *".data."* && "$state" != *"gtm_domain"* && "$state" != *"gtm_datacenter"* ]]
+            then
+              echo "generating destroy plan for $state"
+              terraform plan -target="$state" -out="$state.plan"          
+            fi
+          done 
+          echo "list plans...................."
+          ls -al
         
 
 
