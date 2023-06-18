@@ -76,6 +76,13 @@ jobs:
           echo "${state_list1[0]}"
           echo "${state_list1[1]}"
           
+          echo "read state list file 2 into variable..................."
+          readarray state_list1 < statelist    
+          
+          echo "state_list2---------------"
+          echo "${state_list2[0]}"
+          echo "${state_list2[1]}"          
+          
           #for state in "${state_list[@]}"; do
           # if [[ "$state" != *".data."* && "$state" != *"gtm_domain"* && "$state" != *"gtm_datacenter"* ]]
           #  then
