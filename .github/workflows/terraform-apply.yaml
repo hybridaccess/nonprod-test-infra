@@ -53,7 +53,7 @@ jobs:
           ls -al
           echo "parse state list from file ......................"
           cat statelist
-          echo "read lines 1 and 3 from file ....................@
+          echo "read lines 1 and 3 from file ...................."
           head -n1 statelist
           head -n3 statelist
           
