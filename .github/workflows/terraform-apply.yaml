@@ -65,8 +65,15 @@ jobs:
           echo "read state list file into variable..................."
           read -r -a state_list <<< "$(cat statelist)"      
           
-          echo "---------------"
+          echo "state_list---------------"
           echo "${state_list[@]}"
+          echo "---------------"
+          
+          echo "read state list file into variable..................."
+          read -r -a state_list1 < statelist    
+          
+          echo "state_list1---------------"
+          echo "${state_list1[@]}"
           echo "---------------"
           
           #for state in "${state_list[@]}"; do
