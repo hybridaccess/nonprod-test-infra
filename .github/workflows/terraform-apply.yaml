@@ -63,7 +63,7 @@ jobs:
           cat statelist
           
           echo "read state list file into variable..................."
-          readarray -t state_list < statelist    
+          readarray -d ' ' -t state_list < statelist    
           
           echo "state_list---------------"
           echo "${state_list[0]}"
