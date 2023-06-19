@@ -85,10 +85,10 @@ jobs:
               if [[ "$state == *"group"* }}
               then
                 destroy_order_prefix=3
-              elif [[ "$state == *"network"* }}
+              elif [[ "$state == *"network"* ]]
               then
                 destroy_order_prefix=2
-              elif [[ "$state == *"subnet"* }}
+              elif [[ "$state == *"subnet"* ]]
               then
                 destroy_order_prefix=3                  
               fi
