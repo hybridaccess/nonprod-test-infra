@@ -57,14 +57,14 @@ jobs:
           echo "show 1st entry in statelist......................"
           head -n1 statelist
           echo "removing first entry from list........................"
-          # sed -i '1d' statelist
+          sed -i '1d' statelist
           echo "read lines 1 from file ...................."
           head -n1 statelist
           echo "print final state list ......................."
           cat statelist
           
           echo "read state list file into variable..................."
-          readarray -s 1 -t state_list < statelist    
+          readarray -t state_list < statelist    
           
           echo "state_list---------------"
           echo "${state_list[0]}"
@@ -81,7 +81,6 @@ jobs:
           for state in "${state_list[@]}"; do
             if [[ "$state" != *".data."* && "$state" != *"gtm_domain"* && "$state" != *"gtm_datacenter"* ]]
             then
-              echo "generating destroy plan for $state"
               if [[ "$state" == *"group"* ]]
               then
                 destroy_order_prefix=3
@@ -92,7 +91,8 @@ jobs:
               then
                 destroy_order_prefix=3                  
               fi
-              #terraform plan -target="$state" -out="$destroy_order_prefix_$state.plan"          
+              echo "generating destroy plan for $state"          
+              terraform plan -target="$state" -out="$destroy_order_prefix_$state.plan"          
             fi
           done 
           echo "list plans...................."
