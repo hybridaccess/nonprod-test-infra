@@ -83,16 +83,16 @@ jobs:
             then
               if [[ "$state" == *"group"* ]]
               then
-                destroy_order_prefix=3
+                destroy_order_prefix=2
               elif [[ "$state" == *"network"* ]]
               then
-                destroy_order_prefix=2
+                destroy_order_prefix=3
               elif [[ "$state" == *"subnet"* ]]
               then
-                destroy_order_prefix=3                  
+                destroy_order_prefix=4                  
               fi
               echo "generating destroy plan for $state"          
-              terraform plan -target="$state" -out="$destroy_order_prefix_$state.plan"          
+              terraform plan -target="$state" -out="$destroy_order_prefix$state.plan"          
             fi
           done 
           echo "list plans...................."
