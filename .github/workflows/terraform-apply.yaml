@@ -74,14 +74,23 @@ jobs:
           echo "${state_list[4]}"
           
           echo "state_list_all---------------"
-          echo "${state_list[@]}"          
+          echo "${state_list[@]}" 
+          destroy_order_prefix=1
            
           
           #for state in "${state_list[@]}"; do
             #if [[ "$state" != *".data."* && "$state" != *"gtm_domain"* && "$state" != *"gtm_datacenter"* ]]
             #then
               #echo "generating destroy plan for $state"
-              #terraform plan -target="$state" -out="$state.plan"          
+              if [[ "$state == *"group"* }}
+              then
+                destroy_order_prefix=3
+                elif [[ "$state == *"network"* }}
+                  destroy_order_prefix=2
+                elif [[ "$state == *"subnet"* }}
+                  destroy_order_prefix=3                  
+              fi
+              #terraform plan -target="$state" -out="$destroy_order_prefix_$state.plan"          
             #fi
           #done 
           #echo "list plans...................."
