@@ -82,13 +82,13 @@ jobs:
             if [[ "$state" != *".data."* && "$state" != *"gtm_domain"* && "$state" != *"gtm_datacenter"* ]]
             then
               echo "generating destroy plan for $state"
-              if [[ "$state == *"group"* ]]
+              if [[ "$state" == *"group"* ]]
               then
                 destroy_order_prefix=3
-              elif [[ "$state == *"network"* ]]
+              elif [[ "$state" == *"network"* ]]
               then
                 destroy_order_prefix=2
-              elif [[ "$state == *"subnet"* ]]
+              elif [[ "$state" == *"subnet"* ]]
               then
                 destroy_order_prefix=3                  
               fi
